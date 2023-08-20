@@ -15,12 +15,14 @@ public class EnemySpawningArea : MonoBehaviour
 
     private IEnumerator SpawnEnemies()
     {
+        WaitForSeconds waitForSpawningDuration = new WaitForSeconds(_spawningDuration);
+
         for (int i = 0; i < _maxSpawnedEnemyCount; i++)
         {
             int enemySpawnerIndex = Random.Range(0, _enemySpawners.Length);
             _enemySpawners[enemySpawnerIndex].SpawnEnemy();
 
-            yield return new WaitForSeconds(_spawningDuration);
+            yield return waitForSpawningDuration;
         }
     }
 }
